@@ -14,6 +14,18 @@ const issues = [
 	}
 ];
 
+export class MockResponse {
+	data: any;
+
+	constructor(data) {
+		this.data = data;
+	}
+
+	json() {
+		return this.data;
+	}
+}
+
 describe('IssuesService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -39,7 +51,7 @@ describe('IssuesService', () => {
 
 	it('gets all issues', fakeAsync(() => {
 		this.issuesService.getAllIssues();
-		this.lastConnection.mockRespond(issues);
+		this.lastConnection.mockRespond(new MockResponse(issues));
 		tick();
 
 		expect(this.lastConnection).toBeDefined('no http service connection at all?');
@@ -49,7 +61,7 @@ describe('IssuesService', () => {
 
 	it('searches issues with the given term', fakeAsync(() => {
 		this.issuesService.searchIssues('term');
-		this.lastConnection.mockRespond({items: issues});
+		this.lastConnection.mockRespond(new MockResponse({items: issues}));
 		tick();
 
 		expect(this.lastConnection).toBeDefined('no http service connection at all?');

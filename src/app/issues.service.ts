@@ -14,7 +14,7 @@ export class IssuesService {
 		const since = new Date();
 		since.setDate(since.getDate() - 7);
 		this.http.get(this.ALL_ISSUES + '?since=' + since.toISOString()).subscribe(data => {
-			this.issues = data;
+			this.issues = data.json();
 		});
 	}
 
@@ -26,7 +26,7 @@ export class IssuesService {
 		since.setDate(since.getDate() - 7);
 		this.http.get(this.SEARCH_ISSUES + '?q=' + term + ' repo:angular/angular'
 				+ ' created:>=' + since.toISOString().split('.')[0] + 'Z').subscribe((data: any) => {
-			this.issues = data.items;
+			this.issues = data.json().items;
 		});
 	}
 }

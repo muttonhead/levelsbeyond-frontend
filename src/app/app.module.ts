@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -15,7 +15,7 @@ import { IssueComponent } from './issue/issue.component';
 	],
 	imports: [
 		BrowserModule,
-		HttpClientModule
+		HttpModule
 	],
 	providers: [IssuesService],
 	bootstrap: [AppComponent]

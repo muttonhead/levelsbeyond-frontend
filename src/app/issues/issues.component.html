@@ -1,0 +1,7 @@
+<h1>Angular Issues - Last 7 Days</h1>
+<input #search (keyup.enter)="searchIssues(search.value)"/>
+<ul>
+	<li *ngFor="let issue of this.issuesService.issues">
+		<app-issue [issue]="issue"></app-issue>
+	</li>
+</ul>
